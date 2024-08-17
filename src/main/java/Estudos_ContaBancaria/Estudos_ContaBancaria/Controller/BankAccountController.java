@@ -31,7 +31,7 @@ public class BankAccountController {
     @GetMapping("/{id}")
     public  BankAccount getAccountById(@PathVariable Long id) throws AccountNotFoundException {
         return bankAccountService.getAccountById(id)
-                .orElseThrow(() -> new AccountNotFoundException("Account with ID " + id + " not found"));
+                .orElseThrow(() -> new AccountNotFoundException("Account ID " + id + " not found"));
     }
 
     @PostMapping
@@ -42,7 +42,7 @@ public class BankAccountController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAccount(@PathVariable Long id) throws AccountNotFoundException {
         BankAccount account = bankAccountRepository.findById(id)
-                .orElseThrow(() -> new AccountNotFoundException("Account Id" + id + " not found"));
+                .orElseThrow(() -> new AccountNotFoundException("Account ID" + id + " not found"));
 
         bankAccountRepository.delete(account);
         return ResponseEntity.ok("Account Deleted");
