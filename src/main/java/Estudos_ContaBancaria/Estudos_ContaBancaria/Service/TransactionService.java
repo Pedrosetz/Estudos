@@ -45,7 +45,7 @@ public class TransactionService  {
         bankAccountRepository.save(sender);
         bankAccountRepository.save(receiver);
 
-        Transaction transaction = new Transaction(receiverId, amount, senderId, LocalDateTime.now());
+        Transaction transaction = new Transaction(senderId, amount, receiverId, LocalDateTime.now());
 
         return transactionRepository.save(transaction);
 
